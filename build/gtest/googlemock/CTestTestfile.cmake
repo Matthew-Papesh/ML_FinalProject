@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
 # Source directory: /usr/src/googletest/googlemock
-# Build directory: /home/matthew/Documents/ML_Project/build/gtest/googlemock
+# Build directory: /home/matthew/Documents/GitHub/ML_FinalProject/build/gtest/googlemock
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

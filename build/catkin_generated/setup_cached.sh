@@ -7,5 +7,9 @@
 # new environment variables
 
 # modified environment variables
-export PKG_CONFIG_PATH="/home/matthew/Documents/ML_Project/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PWD='/home/matthew/Documents/ML_Project/build'
+export CMAKE_PREFIX_PATH="/home/matthew/Documents/GitHub/ML_FinalProject/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/matthew/Documents/GitHub/ML_FinalProject/devel/lib:$LD_LIBRARY_PATH"
+export PWD='/home/matthew/Documents/GitHub/ML_FinalProject/build'
+export PYTHONPATH="/home/matthew/Documents/GitHub/ML_FinalProject/devel/lib/python3/dist-packages:$PYTHONPATH"
+export ROSLISP_PACKAGE_DIRECTORIES='/home/matthew/Documents/GitHub/ML_FinalProject/devel/share/common-lisp'
+export ROS_PACKAGE_PATH="/home/matthew/Documents/GitHub/ML_FinalProject/src:$ROS_PACKAGE_PATH"

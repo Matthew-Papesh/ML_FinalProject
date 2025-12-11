@@ -1,0 +1,10 @@
+(cl:in-package ROS_SplinePathMotionProfiling-srv)
+(cl:export '(ACCELERATION-VAL
+          ACCELERATION
+          MAX_LINEAR_SPEED-VAL
+          MAX_LINEAR_SPEED
+          MAX_ANGULAR_SPEED-VAL
+          MAX_ANGULAR_SPEED
+          MAX_CENTRIPETAL_ACCELERATION-VAL
+          MAX_CENTRIPETAL_ACCELERATION
+))

@@ -1,0 +1,349 @@
+; Auto-generated. Do not edit!
+
+
+(cl:in-package ROS_SplinePathMotionProfiling-srv)
+
+
+;//! \htmlinclude GetNavSimTest-request.msg.html
+
+(cl:defclass <GetNavSimTest-request> (roslisp-msg-protocol:ros-message)
+  ((linear_kp
+    :reader linear_kp
+    :initarg :linear_kp
+    :type cl:float
+    :initform 0.0)
+   (linear_ki
+    :reader linear_ki
+    :initarg :linear_ki
+    :type cl:float
+    :initform 0.0)
+   (linear_kd
+    :reader linear_kd
+    :initarg :linear_kd
+    :type cl:float
+    :initform 0.0)
+   (angular_kp
+    :reader angular_kp
+    :initarg :angular_kp
+    :type cl:float
+    :initform 0.0)
+   (angular_ki
+    :reader angular_ki
+    :initarg :angular_ki
+    :type cl:float
+    :initform 0.0)
+   (angular_kd
+    :reader angular_kd
+    :initarg :angular_kd
+    :type cl:float
+    :initform 0.0))
+)
+
+(cl:defclass GetNavSimTest-request (<GetNavSimTest-request>)
+  ())
+
+(cl:defmethod cl:initialize-instance :after ((m <GetNavSimTest-request>) cl:&rest args)
+  (cl:declare (cl:ignorable args))
+  (cl:unless (cl:typep m 'GetNavSimTest-request)
+    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name ROS_SplinePathMotionProfiling-srv:<GetNavSimTest-request> is deprecated: use ROS_SplinePathMotionProfiling-srv:GetNavSimTest-request instead.")))
+
+(cl:ensure-generic-function 'linear_kp-val :lambda-list '(m))
+(cl:defmethod linear_kp-val ((m <GetNavSimTest-request>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ROS_SplinePathMotionProfiling-srv:linear_kp-val is deprecated.  Use ROS_SplinePathMotionProfiling-srv:linear_kp instead.")
+  (linear_kp m))
+
+(cl:ensure-generic-function 'linear_ki-val :lambda-list '(m))
+(cl:defmethod linear_ki-val ((m <GetNavSimTest-request>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ROS_SplinePathMotionProfiling-srv:linear_ki-val is deprecated.  Use ROS_SplinePathMotionProfiling-srv:linear_ki instead.")
+  (linear_ki m))
+
+(cl:ensure-generic-function 'linear_kd-val :lambda-list '(m))
+(cl:defmethod linear_kd-val ((m <GetNavSimTest-request>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ROS_SplinePathMotionProfiling-srv:linear_kd-val is deprecated.  Use ROS_SplinePathMotionProfiling-srv:linear_kd instead.")
+  (linear_kd m))
+
+(cl:ensure-generic-function 'angular_kp-val :lambda-list '(m))
+(cl:defmethod angular_kp-val ((m <GetNavSimTest-request>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ROS_SplinePathMotionProfiling-srv:angular_kp-val is deprecated.  Use ROS_SplinePathMotionProfiling-srv:angular_kp instead.")
+  (angular_kp m))
+
+(cl:ensure-generic-function 'angular_ki-val :lambda-list '(m))
+(cl:defmethod angular_ki-val ((m <GetNavSimTest-request>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ROS_SplinePathMotionProfiling-srv:angular_ki-val is deprecated.  Use ROS_SplinePathMotionProfiling-srv:angular_ki instead.")
+  (angular_ki m))
+
+(cl:ensure-generic-function 'angular_kd-val :lambda-list '(m))
+(cl:defmethod angular_kd-val ((m <GetNavSimTest-request>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ROS_SplinePathMotionProfiling-srv:angular_kd-val is deprecated.  Use ROS_SplinePathMotionProfiling-srv:angular_kd instead.")
+  (angular_kd m))
+(cl:defmethod roslisp-msg-protocol:serialize ((msg <GetNavSimTest-request>) ostream)
+  "Serializes a message object of type '<GetNavSimTest-request>"
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'linear_kp))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'linear_ki))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'linear_kd))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'angular_kp))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'angular_ki))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'angular_kd))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+)
+(cl:defmethod roslisp-msg-protocol:deserialize ((msg <GetNavSimTest-request>) istream)
+  "Deserializes a message object of type '<GetNavSimTest-request>"
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'linear_kp) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'linear_ki) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'linear_kd) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'angular_kp) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'angular_ki) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'angular_kd) (roslisp-utils:decode-double-float-bits bits)))
+  msg
+)
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<GetNavSimTest-request>)))
+  "Returns string type for a service object of type '<GetNavSimTest-request>"
+  "ROS_SplinePathMotionProfiling/GetNavSimTestRequest")
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'GetNavSimTest-request)))
+  "Returns string type for a service object of type 'GetNavSimTest-request"
+  "ROS_SplinePathMotionProfiling/GetNavSimTestRequest")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<GetNavSimTest-request>)))
+  "Returns md5sum for a message object of type '<GetNavSimTest-request>"
+  "5f1ff2380d967c102097eb58066e53b1")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'GetNavSimTest-request)))
+  "Returns md5sum for a message object of type 'GetNavSimTest-request"
+  "5f1ff2380d967c102097eb58066e53b1")
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<GetNavSimTest-request>)))
+  "Returns full string definition for message of type '<GetNavSimTest-request>"
+  (cl:format cl:nil "float64 linear_kp~%float64 linear_ki~%float64 linear_kd ~%float64 angular_kp~%float64 angular_ki~%float64 angular_kd~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'GetNavSimTest-request)))
+  "Returns full string definition for message of type 'GetNavSimTest-request"
+  (cl:format cl:nil "float64 linear_kp~%float64 linear_ki~%float64 linear_kd ~%float64 angular_kp~%float64 angular_ki~%float64 angular_kd~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:serialization-length ((msg <GetNavSimTest-request>))
+  (cl:+ 0
+     8
+     8
+     8
+     8
+     8
+     8
+))
+(cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <GetNavSimTest-request>))
+  "Converts a ROS message object to a list"
+  (cl:list 'GetNavSimTest-request
+    (cl:cons ':linear_kp (linear_kp msg))
+    (cl:cons ':linear_ki (linear_ki msg))
+    (cl:cons ':linear_kd (linear_kd msg))
+    (cl:cons ':angular_kp (angular_kp msg))
+    (cl:cons ':angular_ki (angular_ki msg))
+    (cl:cons ':angular_kd (angular_kd msg))
+))
+;//! \htmlinclude GetNavSimTest-response.msg.html
+
+(cl:defclass <GetNavSimTest-response> (roslisp-msg-protocol:ros-message)
+  ((position_error
+    :reader position_error
+    :initarg :position_error
+    :type cl:float
+    :initform 0.0)
+   (heading_error
+    :reader heading_error
+    :initarg :heading_error
+    :type cl:float
+    :initform 0.0))
+)
+
+(cl:defclass GetNavSimTest-response (<GetNavSimTest-response>)
+  ())
+
+(cl:defmethod cl:initialize-instance :after ((m <GetNavSimTest-response>) cl:&rest args)
+  (cl:declare (cl:ignorable args))
+  (cl:unless (cl:typep m 'GetNavSimTest-response)
+    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name ROS_SplinePathMotionProfiling-srv:<GetNavSimTest-response> is deprecated: use ROS_SplinePathMotionProfiling-srv:GetNavSimTest-response instead.")))
+
+(cl:ensure-generic-function 'position_error-val :lambda-list '(m))
+(cl:defmethod position_error-val ((m <GetNavSimTest-response>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ROS_SplinePathMotionProfiling-srv:position_error-val is deprecated.  Use ROS_SplinePathMotionProfiling-srv:position_error instead.")
+  (position_error m))
+
+(cl:ensure-generic-function 'heading_error-val :lambda-list '(m))
+(cl:defmethod heading_error-val ((m <GetNavSimTest-response>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ROS_SplinePathMotionProfiling-srv:heading_error-val is deprecated.  Use ROS_SplinePathMotionProfiling-srv:heading_error instead.")
+  (heading_error m))
+(cl:defmethod roslisp-msg-protocol:serialize ((msg <GetNavSimTest-response>) ostream)
+  "Serializes a message object of type '<GetNavSimTest-response>"
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'position_error))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'heading_error))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+)
+(cl:defmethod roslisp-msg-protocol:deserialize ((msg <GetNavSimTest-response>) istream)
+  "Deserializes a message object of type '<GetNavSimTest-response>"
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'position_error) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'heading_error) (roslisp-utils:decode-double-float-bits bits)))
+  msg
+)
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<GetNavSimTest-response>)))
+  "Returns string type for a service object of type '<GetNavSimTest-response>"
+  "ROS_SplinePathMotionProfiling/GetNavSimTestResponse")
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'GetNavSimTest-response)))
+  "Returns string type for a service object of type 'GetNavSimTest-response"
+  "ROS_SplinePathMotionProfiling/GetNavSimTestResponse")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<GetNavSimTest-response>)))
+  "Returns md5sum for a message object of type '<GetNavSimTest-response>"
+  "5f1ff2380d967c102097eb58066e53b1")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'GetNavSimTest-response)))
+  "Returns md5sum for a message object of type 'GetNavSimTest-response"
+  "5f1ff2380d967c102097eb58066e53b1")
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<GetNavSimTest-response>)))
+  "Returns full string definition for message of type '<GetNavSimTest-response>"
+  (cl:format cl:nil "float64 position_error~%float64 heading_error~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'GetNavSimTest-response)))
+  "Returns full string definition for message of type 'GetNavSimTest-response"
+  (cl:format cl:nil "float64 position_error~%float64 heading_error~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:serialization-length ((msg <GetNavSimTest-response>))
+  (cl:+ 0
+     8
+     8
+))
+(cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <GetNavSimTest-response>))
+  "Converts a ROS message object to a list"
+  (cl:list 'GetNavSimTest-response
+    (cl:cons ':position_error (position_error msg))
+    (cl:cons ':heading_error (heading_error msg))
+))
+(cl:defmethod roslisp-msg-protocol:service-request-type ((msg (cl:eql 'GetNavSimTest)))
+  'GetNavSimTest-request)
+(cl:defmethod roslisp-msg-protocol:service-response-type ((msg (cl:eql 'GetNavSimTest)))
+  'GetNavSimTest-response)
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'GetNavSimTest)))
+  "Returns string type for a service object of type '<GetNavSimTest>"
+  "ROS_SplinePathMotionProfiling/GetNavSimTest")

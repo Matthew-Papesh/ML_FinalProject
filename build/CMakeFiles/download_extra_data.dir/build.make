@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/matthew/Documents/ML_Project/src
+CMAKE_SOURCE_DIR = /home/matthew/Documents/GitHub/ML_FinalProject/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/matthew/Documents/ML_Project/build
+CMAKE_BINARY_DIR = /home/matthew/Documents/GitHub/ML_FinalProject/build
 
 # Utility rule file for download_extra_data.
 
@@ -67,6 +67,6 @@ CMakeFiles/download_extra_data.dir/clean:
 .PHONY : CMakeFiles/download_extra_data.dir/clean
 
 CMakeFiles/download_extra_data.dir/depend:
-	cd /home/matthew/Documents/ML_Project/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/matthew/Documents/ML_Project/src /home/matthew/Documents/ML_Project/src /home/matthew/Documents/ML_Project/build /home/matthew/Documents/ML_Project/build /home/matthew/Documents/ML_Project/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/matthew/Documents/GitHub/ML_FinalProject/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/matthew/Documents/GitHub/ML_FinalProject/src /home/matthew/Documents/GitHub/ML_FinalProject/src /home/matthew/Documents/GitHub/ML_FinalProject/build /home/matthew/Documents/GitHub/ML_FinalProject/build /home/matthew/Documents/GitHub/ML_FinalProject/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/download_extra_data.dir/depend
 

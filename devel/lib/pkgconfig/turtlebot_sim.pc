@@ -1,8 +1,0 @@
-prefix=/home/matthew/Documents/ML_Project/devel
-
-Name: turtlebot_sim
-Description: Description of turtlebot_sim
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

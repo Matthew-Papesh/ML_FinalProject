@@ -1,2 +1,2 @@
-turtlebot_sim
--DCATKIN_DEVEL_PREFIX=/home/matthew/Documents/ML_Project/devel -DCMAKE_INSTALL_PREFIX=/home/matthew/Documents/ML_Project/install -G Unix Makefiles
+spline_drive
+-DCATKIN_DEVEL_PREFIX=/home/matthew/Documents/GitHub/ML_FinalProject/devel -DCMAKE_INSTALL_PREFIX=/home/matthew/Documents/GitHub/ML_FinalProject/install -G Unix Makefiles
