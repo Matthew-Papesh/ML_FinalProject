@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from setuptools import setup
 
-package_name = 'ROS_SplinePathMotionProfiling'
+package_name = 'spline_drive'
 setup(
     name = package_name,
     version = '0.0.0',

@@ -187,31 +187,58 @@ class GetNavSimTestResponse {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.position_error = null;
-      this.heading_error = null;
+      this.x_errors = null;
+      this.y_errors = null;
+      this.heading_errors = null;
+      this.lin_speed_adjs = null;
+      this.ang_speed_adjs = null;
     }
     else {
-      if (initObj.hasOwnProperty('position_error')) {
-        this.position_error = initObj.position_error
+      if (initObj.hasOwnProperty('x_errors')) {
+        this.x_errors = initObj.x_errors
       }
       else {
-        this.position_error = 0.0;
+        this.x_errors = [];
       }
-      if (initObj.hasOwnProperty('heading_error')) {
-        this.heading_error = initObj.heading_error
+      if (initObj.hasOwnProperty('y_errors')) {
+        this.y_errors = initObj.y_errors
       }
       else {
-        this.heading_error = 0.0;
+        this.y_errors = [];
+      }
+      if (initObj.hasOwnProperty('heading_errors')) {
+        this.heading_errors = initObj.heading_errors
+      }
+      else {
+        this.heading_errors = [];
+      }
+      if (initObj.hasOwnProperty('lin_speed_adjs')) {
+        this.lin_speed_adjs = initObj.lin_speed_adjs
+      }
+      else {
+        this.lin_speed_adjs = [];
+      }
+      if (initObj.hasOwnProperty('ang_speed_adjs')) {
+        this.ang_speed_adjs = initObj.ang_speed_adjs
+      }
+      else {
+        this.ang_speed_adjs = [];
       }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type GetNavSimTestResponse
-    // Serialize message field [position_error]
-    bufferOffset = _serializer.float64(obj.position_error, buffer, bufferOffset);
-    // Serialize message field [heading_error]
-    bufferOffset = _serializer.float64(obj.heading_error, buffer, bufferOffset);
+    // Serialize message field [x_errors]
+    bufferOffset = _arraySerializer.float64(obj.x_errors, buffer, bufferOffset, null);
+    // Serialize message field [y_errors]
+    bufferOffset = _arraySerializer.float64(obj.y_errors, buffer, bufferOffset, null);
+    // Serialize message field [heading_errors]
+    bufferOffset = _arraySerializer.float64(obj.heading_errors, buffer, bufferOffset, null);
+    // Serialize message field [lin_speed_adjs]
+    bufferOffset = _arraySerializer.float64(obj.lin_speed_adjs, buffer, bufferOffset, null);
+    // Serialize message field [ang_speed_adjs]
+    bufferOffset = _arraySerializer.float64(obj.ang_speed_adjs, buffer, bufferOffset, null);
     return bufferOffset;
   }
 
@@ -219,15 +246,27 @@ class GetNavSimTestResponse {
     //deserializes a message object of type GetNavSimTestResponse
     let len;
     let data = new GetNavSimTestResponse(null);
-    // Deserialize message field [position_error]
-    data.position_error = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [heading_error]
-    data.heading_error = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [x_errors]
+    data.x_errors = _arrayDeserializer.float64(buffer, bufferOffset, null)
+    // Deserialize message field [y_errors]
+    data.y_errors = _arrayDeserializer.float64(buffer, bufferOffset, null)
+    // Deserialize message field [heading_errors]
+    data.heading_errors = _arrayDeserializer.float64(buffer, bufferOffset, null)
+    // Deserialize message field [lin_speed_adjs]
+    data.lin_speed_adjs = _arrayDeserializer.float64(buffer, bufferOffset, null)
+    // Deserialize message field [ang_speed_adjs]
+    data.ang_speed_adjs = _arrayDeserializer.float64(buffer, bufferOffset, null)
     return data;
   }
 
   static getMessageSize(object) {
-    return 16;
+    let length = 0;
+    length += 8 * object.x_errors.length;
+    length += 8 * object.y_errors.length;
+    length += 8 * object.heading_errors.length;
+    length += 8 * object.lin_speed_adjs.length;
+    length += 8 * object.ang_speed_adjs.length;
+    return length + 20;
   }
 
   static datatype() {
@@ -237,14 +276,17 @@ class GetNavSimTestResponse {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'aff0bad24a3a18f4048667c38924dc82';
+    return 'bd4ea63b8d9bf4e4666dc2cd5d3af27d';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    float64 position_error
-    float64 heading_error
+    float64[] x_errors
+    float64[] y_errors
+    float64[] heading_errors
+    float64[] lin_speed_adjs 
+    float64[] ang_speed_adjs
     
     `;
   }
@@ -255,18 +297,39 @@ class GetNavSimTestResponse {
       msg = {};
     }
     const resolved = new GetNavSimTestResponse(null);
-    if (msg.position_error !== undefined) {
-      resolved.position_error = msg.position_error;
+    if (msg.x_errors !== undefined) {
+      resolved.x_errors = msg.x_errors;
     }
     else {
-      resolved.position_error = 0.0
+      resolved.x_errors = []
     }
 
-    if (msg.heading_error !== undefined) {
-      resolved.heading_error = msg.heading_error;
+    if (msg.y_errors !== undefined) {
+      resolved.y_errors = msg.y_errors;
     }
     else {
-      resolved.heading_error = 0.0
+      resolved.y_errors = []
+    }
+
+    if (msg.heading_errors !== undefined) {
+      resolved.heading_errors = msg.heading_errors;
+    }
+    else {
+      resolved.heading_errors = []
+    }
+
+    if (msg.lin_speed_adjs !== undefined) {
+      resolved.lin_speed_adjs = msg.lin_speed_adjs;
+    }
+    else {
+      resolved.lin_speed_adjs = []
+    }
+
+    if (msg.ang_speed_adjs !== undefined) {
+      resolved.ang_speed_adjs = msg.ang_speed_adjs;
+    }
+    else {
+      resolved.ang_speed_adjs = []
     }
 
     return resolved;
@@ -276,6 +339,6 @@ class GetNavSimTestResponse {
 module.exports = {
   Request: GetNavSimTestRequest,
   Response: GetNavSimTestResponse,
-  md5sum() { return '5f1ff2380d967c102097eb58066e53b1'; },
+  md5sum() { return 'af597e7527248169acdbd0f263c0d5da'; },
   datatype() { return 'ROS_SplinePathMotionProfiling/GetNavSimTest'; }
 };

@@ -11,8 +11,14 @@
           ANGULAR_KI
           ANGULAR_KD-VAL
           ANGULAR_KD
-          POSITION_ERROR-VAL
-          POSITION_ERROR
-          HEADING_ERROR-VAL
-          HEADING_ERROR
+          X_ERRORS-VAL
+          X_ERRORS
+          Y_ERRORS-VAL
+          Y_ERRORS
+          HEADING_ERRORS-VAL
+          HEADING_ERRORS
+          LIN_SPEED_ADJS-VAL
+          LIN_SPEED_ADJS
+          ANG_SPEED_ADJS-VAL
+          ANG_SPEED_ADJS
 ))

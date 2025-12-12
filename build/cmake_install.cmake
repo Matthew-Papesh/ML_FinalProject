@@ -146,7 +146,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/matthew/Documents/GitHub/ML_FinalProject/build/gtest/cmake_install.cmake")
-  include("/home/matthew/Documents/GitHub/ML_FinalProject/build/spline_drive/cmake_install.cmake")
+  include("/home/matthew/Documents/GitHub/ML_FinalProject/build/ROS_SplinePathMotionProfiling/cmake_install.cmake")
 
 endif()
 

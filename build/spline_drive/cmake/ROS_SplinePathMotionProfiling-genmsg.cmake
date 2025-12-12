@@ -19,7 +19,7 @@ add_custom_target(ROS_SplinePathMotionProfiling_generate_messages ALL)
 
 get_filename_component(_filename "/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive/srv/GetSimpleSplinePlan.srv" NAME_WE)
 add_custom_target(_ROS_SplinePathMotionProfiling_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ROS_SplinePathMotionProfiling" "/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive/srv/GetSimpleSplinePlan.srv" "geometry_msgs/Pose:nav_msgs/Path:geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/PoseStamped:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ROS_SplinePathMotionProfiling" "/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive/srv/GetSimpleSplinePlan.srv" "std_msgs/Header:geometry_msgs/Quaternion:geometry_msgs/PoseStamped:geometry_msgs/Pose:geometry_msgs/Point:nav_msgs/Path"
 )
 
 get_filename_component(_filename "/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive/srv/GetNavSimTest.srv" NAME_WE)
@@ -43,7 +43,7 @@ add_custom_target(_ROS_SplinePathMotionProfiling_generate_messages_check_deps_${
 _generate_srv_cpp(ROS_SplinePathMotionProfiling
   "/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive/srv/GetSimpleSplinePlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ROS_SplinePathMotionProfiling
 )
 _generate_srv_cpp(ROS_SplinePathMotionProfiling
@@ -92,7 +92,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ROS_SplinePathMotionProfiling_gener
 _generate_srv_eus(ROS_SplinePathMotionProfiling
   "/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive/srv/GetSimpleSplinePlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ROS_SplinePathMotionProfiling
 )
 _generate_srv_eus(ROS_SplinePathMotionProfiling
@@ -141,7 +141,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ROS_SplinePathMotionProfiling_gener
 _generate_srv_lisp(ROS_SplinePathMotionProfiling
   "/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive/srv/GetSimpleSplinePlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ROS_SplinePathMotionProfiling
 )
 _generate_srv_lisp(ROS_SplinePathMotionProfiling
@@ -190,7 +190,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ROS_SplinePathMotionProfiling_gener
 _generate_srv_nodejs(ROS_SplinePathMotionProfiling
   "/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive/srv/GetSimpleSplinePlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ROS_SplinePathMotionProfiling
 )
 _generate_srv_nodejs(ROS_SplinePathMotionProfiling
@@ -239,7 +239,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ROS_SplinePathMotionProfiling_gener
 _generate_srv_py(ROS_SplinePathMotionProfiling
   "/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive/srv/GetSimpleSplinePlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/nav_msgs/cmake/../msg/Path.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ROS_SplinePathMotionProfiling
 )
 _generate_srv_py(ROS_SplinePathMotionProfiling
@@ -357,17 +357,6 @@ if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ROS_
   install(
     DIRECTORY ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ROS_SplinePathMotionProfiling
     DESTINATION ${genpy_INSTALL_DIR}
-    # skip all init files
-    PATTERN "__init__.py" EXCLUDE
-    PATTERN "__init__.pyc" EXCLUDE
-  )
-  # install init files which are not in the root folder of the generated code
-  string(REGEX REPLACE "([][+.*()^])" "\\\\\\1" ESCAPED_PATH "${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ROS_SplinePathMotionProfiling")
-  install(
-    DIRECTORY ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ROS_SplinePathMotionProfiling
-    DESTINATION ${genpy_INSTALL_DIR}
-    FILES_MATCHING
-    REGEX "${ESCAPED_PATH}/.+/__init__.pyc?$"
   )
 endif()
 if(TARGET geometry_msgs_generate_messages_py)

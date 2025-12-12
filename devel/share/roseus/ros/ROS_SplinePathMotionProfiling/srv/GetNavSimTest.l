@@ -112,48 +112,121 @@
 
 (defclass ROS_SplinePathMotionProfiling::GetNavSimTestResponse
   :super ros::object
-  :slots (_position_error _heading_error ))
+  :slots (_x_errors _y_errors _heading_errors _lin_speed_adjs _ang_speed_adjs ))
 
 (defmethod ROS_SplinePathMotionProfiling::GetNavSimTestResponse
   (:init
    (&key
-    ((:position_error __position_error) 0.0)
-    ((:heading_error __heading_error) 0.0)
+    ((:x_errors __x_errors) (make-array 0 :initial-element 0.0 :element-type :float))
+    ((:y_errors __y_errors) (make-array 0 :initial-element 0.0 :element-type :float))
+    ((:heading_errors __heading_errors) (make-array 0 :initial-element 0.0 :element-type :float))
+    ((:lin_speed_adjs __lin_speed_adjs) (make-array 0 :initial-element 0.0 :element-type :float))
+    ((:ang_speed_adjs __ang_speed_adjs) (make-array 0 :initial-element 0.0 :element-type :float))
     )
    (send-super :init)
-   (setq _position_error (float __position_error))
-   (setq _heading_error (float __heading_error))
+   (setq _x_errors __x_errors)
+   (setq _y_errors __y_errors)
+   (setq _heading_errors __heading_errors)
+   (setq _lin_speed_adjs __lin_speed_adjs)
+   (setq _ang_speed_adjs __ang_speed_adjs)
    self)
-  (:position_error
-   (&optional __position_error)
-   (if __position_error (setq _position_error __position_error)) _position_error)
-  (:heading_error
-   (&optional __heading_error)
-   (if __heading_error (setq _heading_error __heading_error)) _heading_error)
+  (:x_errors
+   (&optional __x_errors)
+   (if __x_errors (setq _x_errors __x_errors)) _x_errors)
+  (:y_errors
+   (&optional __y_errors)
+   (if __y_errors (setq _y_errors __y_errors)) _y_errors)
+  (:heading_errors
+   (&optional __heading_errors)
+   (if __heading_errors (setq _heading_errors __heading_errors)) _heading_errors)
+  (:lin_speed_adjs
+   (&optional __lin_speed_adjs)
+   (if __lin_speed_adjs (setq _lin_speed_adjs __lin_speed_adjs)) _lin_speed_adjs)
+  (:ang_speed_adjs
+   (&optional __ang_speed_adjs)
+   (if __ang_speed_adjs (setq _ang_speed_adjs __ang_speed_adjs)) _ang_speed_adjs)
   (:serialization-length
    ()
    (+
-    ;; float64 _position_error
-    8
-    ;; float64 _heading_error
-    8
+    ;; float64[] _x_errors
+    (* 8    (length _x_errors)) 4
+    ;; float64[] _y_errors
+    (* 8    (length _y_errors)) 4
+    ;; float64[] _heading_errors
+    (* 8    (length _heading_errors)) 4
+    ;; float64[] _lin_speed_adjs
+    (* 8    (length _lin_speed_adjs)) 4
+    ;; float64[] _ang_speed_adjs
+    (* 8    (length _ang_speed_adjs)) 4
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; float64 _position_error
-       (sys::poke _position_error (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _heading_error
-       (sys::poke _heading_error (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64[] _x_errors
+     (write-long (length _x_errors) s)
+     (dotimes (i (length _x_errors))
+       (sys::poke (elt _x_errors i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
+     ;; float64[] _y_errors
+     (write-long (length _y_errors) s)
+     (dotimes (i (length _y_errors))
+       (sys::poke (elt _y_errors i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
+     ;; float64[] _heading_errors
+     (write-long (length _heading_errors) s)
+     (dotimes (i (length _heading_errors))
+       (sys::poke (elt _heading_errors i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
+     ;; float64[] _lin_speed_adjs
+     (write-long (length _lin_speed_adjs) s)
+     (dotimes (i (length _lin_speed_adjs))
+       (sys::poke (elt _lin_speed_adjs i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
+     ;; float64[] _ang_speed_adjs
+     (write-long (length _ang_speed_adjs) s)
+     (dotimes (i (length _ang_speed_adjs))
+       (sys::poke (elt _ang_speed_adjs i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; float64 _position_error
-     (setq _position_error (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _heading_error
-     (setq _heading_error (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64[] _x_errors
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _x_errors (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _x_errors i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
+   ;; float64[] _y_errors
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _y_errors (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _y_errors i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
+   ;; float64[] _heading_errors
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _heading_errors (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _heading_errors i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
+   ;; float64[] _lin_speed_adjs
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _lin_speed_adjs (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _lin_speed_adjs i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
+   ;; float64[] _ang_speed_adjs
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _ang_speed_adjs (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _ang_speed_adjs i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
    ;;
    self)
   )
@@ -162,7 +235,7 @@
   :super ros::object
   :slots ())
 
-(setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :md5sum-) "5f1ff2380d967c102097eb58066e53b1")
+(setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :md5sum-) "af597e7527248169acdbd0f263c0d5da")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :datatype-) "ROS_SplinePathMotionProfiling/GetNavSimTest")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :request) ROS_SplinePathMotionProfiling::GetNavSimTestRequest)
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :response) ROS_SplinePathMotionProfiling::GetNavSimTestResponse)
@@ -170,7 +243,7 @@
 (defmethod ROS_SplinePathMotionProfiling::GetNavSimTestRequest
   (:response () (instance ROS_SplinePathMotionProfiling::GetNavSimTestResponse :init)))
 
-(setf (get ROS_SplinePathMotionProfiling::GetNavSimTestRequest :md5sum-) "5f1ff2380d967c102097eb58066e53b1")
+(setf (get ROS_SplinePathMotionProfiling::GetNavSimTestRequest :md5sum-) "af597e7527248169acdbd0f263c0d5da")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTestRequest :datatype-) "ROS_SplinePathMotionProfiling/GetNavSimTestRequest")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTestRequest :definition-)
       "float64 linear_kp
@@ -180,11 +253,14 @@ float64 angular_kp
 float64 angular_ki
 float64 angular_kd
 ---
-float64 position_error
-float64 heading_error
+float64[] x_errors
+float64[] y_errors
+float64[] heading_errors
+float64[] lin_speed_adjs 
+float64[] ang_speed_adjs
 ")
 
-(setf (get ROS_SplinePathMotionProfiling::GetNavSimTestResponse :md5sum-) "5f1ff2380d967c102097eb58066e53b1")
+(setf (get ROS_SplinePathMotionProfiling::GetNavSimTestResponse :md5sum-) "af597e7527248169acdbd0f263c0d5da")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTestResponse :datatype-) "ROS_SplinePathMotionProfiling/GetNavSimTestResponse")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTestResponse :definition-)
       "float64 linear_kp
@@ -194,12 +270,15 @@ float64 angular_kp
 float64 angular_ki
 float64 angular_kd
 ---
-float64 position_error
-float64 heading_error
+float64[] x_errors
+float64[] y_errors
+float64[] heading_errors
+float64[] lin_speed_adjs 
+float64[] ang_speed_adjs
 ")
 
 
 
-(provide :ROS_SplinePathMotionProfiling/GetNavSimTest "5f1ff2380d967c102097eb58066e53b1")
+(provide :ROS_SplinePathMotionProfiling/GetNavSimTest "af597e7527248169acdbd0f263c0d5da")
 
 
