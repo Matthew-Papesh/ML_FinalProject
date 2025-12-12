@@ -143,17 +143,19 @@ import struct
 
 
 class GetNavSimTestResponse(genpy.Message):
-  _md5sum = "bd4ea63b8d9bf4e4666dc2cd5d3af27d"
+  _md5sum = "a4824d49aad876fcf1e7bb0e52ff3ea6"
   _type = "ROS_SplinePathMotionProfiling/GetNavSimTestResponse"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """float64[] x_errors
 float64[] y_errors
 float64[] heading_errors
+float64[] lin_speeds
+float64[] ang_speeds
 float64[] lin_speed_adjs 
 float64[] ang_speed_adjs
 """
-  __slots__ = ['x_errors','y_errors','heading_errors','lin_speed_adjs','ang_speed_adjs']
-  _slot_types = ['float64[]','float64[]','float64[]','float64[]','float64[]']
+  __slots__ = ['x_errors','y_errors','heading_errors','lin_speeds','ang_speeds','lin_speed_adjs','ang_speed_adjs']
+  _slot_types = ['float64[]','float64[]','float64[]','float64[]','float64[]','float64[]','float64[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -163,7 +165,7 @@ float64[] ang_speed_adjs
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       x_errors,y_errors,heading_errors,lin_speed_adjs,ang_speed_adjs
+       x_errors,y_errors,heading_errors,lin_speeds,ang_speeds,lin_speed_adjs,ang_speed_adjs
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -178,6 +180,10 @@ float64[] ang_speed_adjs
         self.y_errors = []
       if self.heading_errors is None:
         self.heading_errors = []
+      if self.lin_speeds is None:
+        self.lin_speeds = []
+      if self.ang_speeds is None:
+        self.ang_speeds = []
       if self.lin_speed_adjs is None:
         self.lin_speed_adjs = []
       if self.ang_speed_adjs is None:
@@ -186,6 +192,8 @@ float64[] ang_speed_adjs
       self.x_errors = []
       self.y_errors = []
       self.heading_errors = []
+      self.lin_speeds = []
+      self.ang_speeds = []
       self.lin_speed_adjs = []
       self.ang_speed_adjs = []
 
@@ -213,6 +221,14 @@ float64[] ang_speed_adjs
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
       buff.write(struct.Struct(pattern).pack(*self.heading_errors))
+      length = len(self.lin_speeds)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.lin_speeds))
+      length = len(self.ang_speeds)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.ang_speeds))
       length = len(self.lin_speed_adjs)
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
@@ -264,6 +280,22 @@ float64[] ang_speed_adjs
       start = end
       s = struct.Struct(pattern)
       end += s.size
+      self.lin_speeds = s.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.ang_speeds = s.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
       self.lin_speed_adjs = s.unpack(str[start:end])
       start = end
       end += 4
@@ -297,6 +329,14 @@ float64[] ang_speed_adjs
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
       buff.write(self.heading_errors.tostring())
+      length = len(self.lin_speeds)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.lin_speeds.tostring())
+      length = len(self.ang_speeds)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.ang_speeds.tostring())
       length = len(self.lin_speed_adjs)
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
@@ -349,6 +389,22 @@ float64[] ang_speed_adjs
       start = end
       s = struct.Struct(pattern)
       end += s.size
+      self.lin_speeds = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.ang_speeds = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
       self.lin_speed_adjs = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
       start = end
       end += 4
@@ -368,6 +424,6 @@ def _get_struct_I():
     return _struct_I
 class GetNavSimTest(object):
   _type          = 'ROS_SplinePathMotionProfiling/GetNavSimTest'
-  _md5sum = 'af597e7527248169acdbd0f263c0d5da'
+  _md5sum = '649d06840e1e033bccdf27c729e6914b'
   _request_class  = GetNavSimTestRequest
   _response_class = GetNavSimTestResponse

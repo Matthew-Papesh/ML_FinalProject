@@ -1,2 +1,2 @@
-ROS_SplinePathMotionProfiling
+.
 -DCATKIN_DEVEL_PREFIX=/home/matthew/Documents/GitHub/ML_FinalProject/devel -DCMAKE_INSTALL_PREFIX=/home/matthew/Documents/GitHub/ML_FinalProject/install -G Unix Makefiles

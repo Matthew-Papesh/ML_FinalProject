@@ -27,6 +27,8 @@ struct GetNavSimTestResponse_
     : x_errors()
     , y_errors()
     , heading_errors()
+    , lin_speeds()
+    , ang_speeds()
     , lin_speed_adjs()
     , ang_speed_adjs()  {
     }
@@ -34,6 +36,8 @@ struct GetNavSimTestResponse_
     : x_errors(_alloc)
     , y_errors(_alloc)
     , heading_errors(_alloc)
+    , lin_speeds(_alloc)
+    , ang_speeds(_alloc)
     , lin_speed_adjs(_alloc)
     , ang_speed_adjs(_alloc)  {
   (void)_alloc;
@@ -49,6 +53,12 @@ struct GetNavSimTestResponse_
 
    typedef std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> _heading_errors_type;
   _heading_errors_type heading_errors;
+
+   typedef std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> _lin_speeds_type;
+  _lin_speeds_type lin_speeds;
+
+   typedef std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> _ang_speeds_type;
+  _ang_speeds_type ang_speeds;
 
    typedef std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> _lin_speed_adjs_type;
   _lin_speed_adjs_type lin_speed_adjs;
@@ -88,6 +98,8 @@ bool operator==(const ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<Co
   return lhs.x_errors == rhs.x_errors &&
     lhs.y_errors == rhs.y_errors &&
     lhs.heading_errors == rhs.heading_errors &&
+    lhs.lin_speeds == rhs.lin_speeds &&
+    lhs.ang_speeds == rhs.ang_speeds &&
     lhs.lin_speed_adjs == rhs.lin_speed_adjs &&
     lhs.ang_speed_adjs == rhs.ang_speed_adjs;
 }
@@ -146,12 +158,12 @@ struct MD5Sum< ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<Container
 {
   static const char* value()
   {
-    return "bd4ea63b8d9bf4e4666dc2cd5d3af27d";
+    return "a4824d49aad876fcf1e7bb0e52ff3ea6";
   }
 
   static const char* value(const ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xbd4ea63b8d9bf4e4ULL;
-  static const uint64_t static_value2 = 0x666dc2cd5d3af27dULL;
+  static const uint64_t static_value1 = 0xa4824d49aad876fcULL;
+  static const uint64_t static_value2 = 0xf1e7bb0e52ff3ea6ULL;
 };
 
 template<class ContainerAllocator>
@@ -173,6 +185,8 @@ struct Definition< ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<Conta
     return "float64[] x_errors\n"
 "float64[] y_errors\n"
 "float64[] heading_errors\n"
+"float64[] lin_speeds\n"
+"float64[] ang_speeds\n"
 "float64[] lin_speed_adjs \n"
 "float64[] ang_speed_adjs\n"
 ;
@@ -196,6 +210,8 @@ namespace serialization
       stream.next(m.x_errors);
       stream.next(m.y_errors);
       stream.next(m.heading_errors);
+      stream.next(m.lin_speeds);
+      stream.next(m.ang_speeds);
       stream.next(m.lin_speed_adjs);
       stream.next(m.ang_speed_adjs);
     }
@@ -260,6 +276,36 @@ struct Printer< ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<Containe
       Printer<double>::stream(s, true ? std::string() : indent + "    ", v.heading_errors[i]);
     }
     if (v.heading_errors.empty() || true)
+      s << "]";
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "lin_speeds: ";
+    if (v.lin_speeds.empty() || true)
+      s << "[";
+    for (size_t i = 0; i < v.lin_speeds.size(); ++i)
+    {
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<double>::stream(s, true ? std::string() : indent + "    ", v.lin_speeds[i]);
+    }
+    if (v.lin_speeds.empty() || true)
+      s << "]";
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "ang_speeds: ";
+    if (v.ang_speeds.empty() || true)
+      s << "[";
+    for (size_t i = 0; i < v.ang_speeds.size(); ++i)
+    {
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<double>::stream(s, true ? std::string() : indent + "    ", v.ang_speeds[i]);
+    }
+    if (v.ang_speeds.empty() || true)
       s << "]";
     if (true || !indent.empty())
       s << std::endl;

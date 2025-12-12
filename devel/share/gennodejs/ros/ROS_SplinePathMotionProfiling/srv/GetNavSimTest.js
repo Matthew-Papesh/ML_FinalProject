@@ -190,6 +190,8 @@ class GetNavSimTestResponse {
       this.x_errors = null;
       this.y_errors = null;
       this.heading_errors = null;
+      this.lin_speeds = null;
+      this.ang_speeds = null;
       this.lin_speed_adjs = null;
       this.ang_speed_adjs = null;
     }
@@ -211,6 +213,18 @@ class GetNavSimTestResponse {
       }
       else {
         this.heading_errors = [];
+      }
+      if (initObj.hasOwnProperty('lin_speeds')) {
+        this.lin_speeds = initObj.lin_speeds
+      }
+      else {
+        this.lin_speeds = [];
+      }
+      if (initObj.hasOwnProperty('ang_speeds')) {
+        this.ang_speeds = initObj.ang_speeds
+      }
+      else {
+        this.ang_speeds = [];
       }
       if (initObj.hasOwnProperty('lin_speed_adjs')) {
         this.lin_speed_adjs = initObj.lin_speed_adjs
@@ -235,6 +249,10 @@ class GetNavSimTestResponse {
     bufferOffset = _arraySerializer.float64(obj.y_errors, buffer, bufferOffset, null);
     // Serialize message field [heading_errors]
     bufferOffset = _arraySerializer.float64(obj.heading_errors, buffer, bufferOffset, null);
+    // Serialize message field [lin_speeds]
+    bufferOffset = _arraySerializer.float64(obj.lin_speeds, buffer, bufferOffset, null);
+    // Serialize message field [ang_speeds]
+    bufferOffset = _arraySerializer.float64(obj.ang_speeds, buffer, bufferOffset, null);
     // Serialize message field [lin_speed_adjs]
     bufferOffset = _arraySerializer.float64(obj.lin_speed_adjs, buffer, bufferOffset, null);
     // Serialize message field [ang_speed_adjs]
@@ -252,6 +270,10 @@ class GetNavSimTestResponse {
     data.y_errors = _arrayDeserializer.float64(buffer, bufferOffset, null)
     // Deserialize message field [heading_errors]
     data.heading_errors = _arrayDeserializer.float64(buffer, bufferOffset, null)
+    // Deserialize message field [lin_speeds]
+    data.lin_speeds = _arrayDeserializer.float64(buffer, bufferOffset, null)
+    // Deserialize message field [ang_speeds]
+    data.ang_speeds = _arrayDeserializer.float64(buffer, bufferOffset, null)
     // Deserialize message field [lin_speed_adjs]
     data.lin_speed_adjs = _arrayDeserializer.float64(buffer, bufferOffset, null)
     // Deserialize message field [ang_speed_adjs]
@@ -264,9 +286,11 @@ class GetNavSimTestResponse {
     length += 8 * object.x_errors.length;
     length += 8 * object.y_errors.length;
     length += 8 * object.heading_errors.length;
+    length += 8 * object.lin_speeds.length;
+    length += 8 * object.ang_speeds.length;
     length += 8 * object.lin_speed_adjs.length;
     length += 8 * object.ang_speed_adjs.length;
-    return length + 20;
+    return length + 28;
   }
 
   static datatype() {
@@ -276,7 +300,7 @@ class GetNavSimTestResponse {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'bd4ea63b8d9bf4e4666dc2cd5d3af27d';
+    return 'a4824d49aad876fcf1e7bb0e52ff3ea6';
   }
 
   static messageDefinition() {
@@ -285,6 +309,8 @@ class GetNavSimTestResponse {
     float64[] x_errors
     float64[] y_errors
     float64[] heading_errors
+    float64[] lin_speeds
+    float64[] ang_speeds
     float64[] lin_speed_adjs 
     float64[] ang_speed_adjs
     
@@ -318,6 +344,20 @@ class GetNavSimTestResponse {
       resolved.heading_errors = []
     }
 
+    if (msg.lin_speeds !== undefined) {
+      resolved.lin_speeds = msg.lin_speeds;
+    }
+    else {
+      resolved.lin_speeds = []
+    }
+
+    if (msg.ang_speeds !== undefined) {
+      resolved.ang_speeds = msg.ang_speeds;
+    }
+    else {
+      resolved.ang_speeds = []
+    }
+
     if (msg.lin_speed_adjs !== undefined) {
       resolved.lin_speed_adjs = msg.lin_speed_adjs;
     }
@@ -339,6 +379,6 @@ class GetNavSimTestResponse {
 module.exports = {
   Request: GetNavSimTestRequest,
   Response: GetNavSimTestResponse,
-  md5sum() { return 'af597e7527248169acdbd0f263c0d5da'; },
+  md5sum() { return '649d06840e1e033bccdf27c729e6914b'; },
   datatype() { return 'ROS_SplinePathMotionProfiling/GetNavSimTest'; }
 };

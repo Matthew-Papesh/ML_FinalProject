@@ -1,7 +1,7 @@
 #!/usr/bin/env python3 
 import rospy
 from std_srvs.srv import Empty
-from ROS_SplinePathMotionProfiling.srv import GetNavCriteriaPlan, GetNavSimTest
+from src.srv import GetNavCriteriaPlan, GetNavSimTest
 from gazebo_msgs.srv import SetModelState
 from gazebo_msgs.msg import ModelState
 import handler

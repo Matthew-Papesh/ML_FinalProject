@@ -17,6 +17,10 @@
           Y_ERRORS
           HEADING_ERRORS-VAL
           HEADING_ERRORS
+          LIN_SPEEDS-VAL
+          LIN_SPEEDS
+          ANG_SPEEDS-VAL
+          ANG_SPEEDS
           LIN_SPEED_ADJS-VAL
           LIN_SPEED_ADJS
           ANG_SPEED_ADJS-VAL

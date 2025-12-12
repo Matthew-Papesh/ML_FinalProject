@@ -67,7 +67,7 @@ set(ROS_SplinePathMotionProfiling_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(ROS_SplinePathMotionProfiling_SOURCE_PREFIX /home/matthew/Documents/GitHub/ML_FinalProject/src/ROS_SplinePathMotionProfiling)
+  set(ROS_SplinePathMotionProfiling_SOURCE_PREFIX /home/matthew/Documents/GitHub/ML_FinalProject/src)
   set(ROS_SplinePathMotionProfiling_DEVEL_PREFIX /home/matthew/Documents/GitHub/ML_FinalProject/devel)
   set(ROS_SplinePathMotionProfiling_INSTALL_PREFIX "")
   set(ROS_SplinePathMotionProfiling_PREFIX ${ROS_SplinePathMotionProfiling_DEVEL_PREFIX})
@@ -110,7 +110,7 @@ if(NOT "/home/matthew/Documents/GitHub/ML_FinalProject/devel/include " STREQUAL 
         message(FATAL_ERROR "Project 'ROS_SplinePathMotionProfiling' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'ROS_SplinePathMotionProfiling' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/matthew/Documents/GitHub/ML_FinalProject/src/ROS_SplinePathMotionProfiling/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'ROS_SplinePathMotionProfiling' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/matthew/Documents/GitHub/ML_FinalProject/src/${idir}'.  ${_report}")
     endif()
     _list_append_unique(ROS_SplinePathMotionProfiling_INCLUDE_DIRS ${include})
   endforeach()

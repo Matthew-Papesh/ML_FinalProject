@@ -112,7 +112,7 @@
 
 (defclass ROS_SplinePathMotionProfiling::GetNavSimTestResponse
   :super ros::object
-  :slots (_x_errors _y_errors _heading_errors _lin_speed_adjs _ang_speed_adjs ))
+  :slots (_x_errors _y_errors _heading_errors _lin_speeds _ang_speeds _lin_speed_adjs _ang_speed_adjs ))
 
 (defmethod ROS_SplinePathMotionProfiling::GetNavSimTestResponse
   (:init
@@ -120,6 +120,8 @@
     ((:x_errors __x_errors) (make-array 0 :initial-element 0.0 :element-type :float))
     ((:y_errors __y_errors) (make-array 0 :initial-element 0.0 :element-type :float))
     ((:heading_errors __heading_errors) (make-array 0 :initial-element 0.0 :element-type :float))
+    ((:lin_speeds __lin_speeds) (make-array 0 :initial-element 0.0 :element-type :float))
+    ((:ang_speeds __ang_speeds) (make-array 0 :initial-element 0.0 :element-type :float))
     ((:lin_speed_adjs __lin_speed_adjs) (make-array 0 :initial-element 0.0 :element-type :float))
     ((:ang_speed_adjs __ang_speed_adjs) (make-array 0 :initial-element 0.0 :element-type :float))
     )
@@ -127,6 +129,8 @@
    (setq _x_errors __x_errors)
    (setq _y_errors __y_errors)
    (setq _heading_errors __heading_errors)
+   (setq _lin_speeds __lin_speeds)
+   (setq _ang_speeds __ang_speeds)
    (setq _lin_speed_adjs __lin_speed_adjs)
    (setq _ang_speed_adjs __ang_speed_adjs)
    self)
@@ -139,6 +143,12 @@
   (:heading_errors
    (&optional __heading_errors)
    (if __heading_errors (setq _heading_errors __heading_errors)) _heading_errors)
+  (:lin_speeds
+   (&optional __lin_speeds)
+   (if __lin_speeds (setq _lin_speeds __lin_speeds)) _lin_speeds)
+  (:ang_speeds
+   (&optional __ang_speeds)
+   (if __ang_speeds (setq _ang_speeds __ang_speeds)) _ang_speeds)
   (:lin_speed_adjs
    (&optional __lin_speed_adjs)
    (if __lin_speed_adjs (setq _lin_speed_adjs __lin_speed_adjs)) _lin_speed_adjs)
@@ -154,6 +164,10 @@
     (* 8    (length _y_errors)) 4
     ;; float64[] _heading_errors
     (* 8    (length _heading_errors)) 4
+    ;; float64[] _lin_speeds
+    (* 8    (length _lin_speeds)) 4
+    ;; float64[] _ang_speeds
+    (* 8    (length _ang_speeds)) 4
     ;; float64[] _lin_speed_adjs
     (* 8    (length _lin_speed_adjs)) 4
     ;; float64[] _ang_speed_adjs
@@ -177,6 +191,16 @@
      (write-long (length _heading_errors) s)
      (dotimes (i (length _heading_errors))
        (sys::poke (elt _heading_errors i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
+     ;; float64[] _lin_speeds
+     (write-long (length _lin_speeds) s)
+     (dotimes (i (length _lin_speeds))
+       (sys::poke (elt _lin_speeds i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+       )
+     ;; float64[] _ang_speeds
+     (write-long (length _ang_speeds) s)
+     (dotimes (i (length _ang_speeds))
+       (sys::poke (elt _ang_speeds i) (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
        )
      ;; float64[] _lin_speed_adjs
      (write-long (length _lin_speed_adjs) s)
@@ -213,6 +237,20 @@
      (dotimes (i n)
      (setf (elt _heading_errors i) (sys::peek buf ptr- :double)) (incf ptr- 8)
      ))
+   ;; float64[] _lin_speeds
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _lin_speeds (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _lin_speeds i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
+   ;; float64[] _ang_speeds
+   (let (n)
+     (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
+     (setq _ang_speeds (instantiate float-vector n))
+     (dotimes (i n)
+     (setf (elt _ang_speeds i) (sys::peek buf ptr- :double)) (incf ptr- 8)
+     ))
    ;; float64[] _lin_speed_adjs
    (let (n)
      (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
@@ -235,7 +273,7 @@
   :super ros::object
   :slots ())
 
-(setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :md5sum-) "af597e7527248169acdbd0f263c0d5da")
+(setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :md5sum-) "649d06840e1e033bccdf27c729e6914b")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :datatype-) "ROS_SplinePathMotionProfiling/GetNavSimTest")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :request) ROS_SplinePathMotionProfiling::GetNavSimTestRequest)
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTest :response) ROS_SplinePathMotionProfiling::GetNavSimTestResponse)
@@ -243,7 +281,7 @@
 (defmethod ROS_SplinePathMotionProfiling::GetNavSimTestRequest
   (:response () (instance ROS_SplinePathMotionProfiling::GetNavSimTestResponse :init)))
 
-(setf (get ROS_SplinePathMotionProfiling::GetNavSimTestRequest :md5sum-) "af597e7527248169acdbd0f263c0d5da")
+(setf (get ROS_SplinePathMotionProfiling::GetNavSimTestRequest :md5sum-) "649d06840e1e033bccdf27c729e6914b")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTestRequest :datatype-) "ROS_SplinePathMotionProfiling/GetNavSimTestRequest")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTestRequest :definition-)
       "float64 linear_kp
@@ -256,11 +294,13 @@ float64 angular_kd
 float64[] x_errors
 float64[] y_errors
 float64[] heading_errors
+float64[] lin_speeds
+float64[] ang_speeds
 float64[] lin_speed_adjs 
 float64[] ang_speed_adjs
 ")
 
-(setf (get ROS_SplinePathMotionProfiling::GetNavSimTestResponse :md5sum-) "af597e7527248169acdbd0f263c0d5da")
+(setf (get ROS_SplinePathMotionProfiling::GetNavSimTestResponse :md5sum-) "649d06840e1e033bccdf27c729e6914b")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTestResponse :datatype-) "ROS_SplinePathMotionProfiling/GetNavSimTestResponse")
 (setf (get ROS_SplinePathMotionProfiling::GetNavSimTestResponse :definition-)
       "float64 linear_kp
@@ -273,12 +313,14 @@ float64 angular_kd
 float64[] x_errors
 float64[] y_errors
 float64[] heading_errors
+float64[] lin_speeds
+float64[] ang_speeds
 float64[] lin_speed_adjs 
 float64[] ang_speed_adjs
 ")
 
 
 
-(provide :ROS_SplinePathMotionProfiling/GetNavSimTest "af597e7527248169acdbd0f263c0d5da")
+(provide :ROS_SplinePathMotionProfiling/GetNavSimTest "649d06840e1e033bccdf27c729e6914b")
 
 

@@ -143,10 +143,72 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 file(INSTALL DESTINATION "/home/matthew/Documents/GitHub/ML_FinalProject/install" TYPE FILE FILES "/home/matthew/Documents/GitHub/ML_FinalProject/build/catkin_generated/installspace/.rosinstall")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  include("/home/matthew/Documents/GitHub/ML_FinalProject/build/catkin_generated/safe_execute_install.cmake")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ROS_SplinePathMotionProfiling/srv" TYPE FILE FILES
+    "/home/matthew/Documents/GitHub/ML_FinalProject/src/srv/GetSimpleSplinePlan.srv"
+    "/home/matthew/Documents/GitHub/ML_FinalProject/src/srv/GetNavSimTest.srv"
+    "/home/matthew/Documents/GitHub/ML_FinalProject/src/srv/GetNavCriteriaPlan.srv"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ROS_SplinePathMotionProfiling/cmake" TYPE FILE FILES "/home/matthew/Documents/GitHub/ML_FinalProject/build/catkin_generated/installspace/ROS_SplinePathMotionProfiling-msg-paths.cmake")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/matthew/Documents/GitHub/ML_FinalProject/devel/include/ROS_SplinePathMotionProfiling")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/matthew/Documents/GitHub/ML_FinalProject/devel/share/roseus/ros/ROS_SplinePathMotionProfiling")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/matthew/Documents/GitHub/ML_FinalProject/devel/share/common-lisp/ros/ROS_SplinePathMotionProfiling")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/matthew/Documents/GitHub/ML_FinalProject/devel/share/gennodejs/ros/ROS_SplinePathMotionProfiling")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  execute_process(COMMAND "/usr/bin/python3" -m compileall "/home/matthew/Documents/GitHub/ML_FinalProject/devel/lib/python3/dist-packages/ROS_SplinePathMotionProfiling")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages" TYPE DIRECTORY FILES "/home/matthew/Documents/GitHub/ML_FinalProject/devel/lib/python3/dist-packages/ROS_SplinePathMotionProfiling" REGEX "/\\_\\_init\\_\\_\\.py$" EXCLUDE REGEX "/\\_\\_init\\_\\_\\.pyc$" EXCLUDE)
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages" TYPE DIRECTORY FILES "/home/matthew/Documents/GitHub/ML_FinalProject/devel/lib/python3/dist-packages/ROS_SplinePathMotionProfiling" FILES_MATCHING REGEX "/home/matthew/Documents/GitHub/ML_FinalProject/devel/lib/python3/dist-packages/ROS_SplinePathMotionProfiling/.+/__init__.pyc?$")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/matthew/Documents/GitHub/ML_FinalProject/build/catkin_generated/installspace/ROS_SplinePathMotionProfiling.pc")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ROS_SplinePathMotionProfiling/cmake" TYPE FILE FILES "/home/matthew/Documents/GitHub/ML_FinalProject/build/catkin_generated/installspace/ROS_SplinePathMotionProfiling-msg-extras.cmake")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ROS_SplinePathMotionProfiling/cmake" TYPE FILE FILES
+    "/home/matthew/Documents/GitHub/ML_FinalProject/build/catkin_generated/installspace/ROS_SplinePathMotionProfilingConfig.cmake"
+    "/home/matthew/Documents/GitHub/ML_FinalProject/build/catkin_generated/installspace/ROS_SplinePathMotionProfilingConfig-version.cmake"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ROS_SplinePathMotionProfiling" TYPE FILE FILES "/home/matthew/Documents/GitHub/ML_FinalProject/src/package.xml")
+endif()
+
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/matthew/Documents/GitHub/ML_FinalProject/build/gtest/cmake_install.cmake")
-  include("/home/matthew/Documents/GitHub/ML_FinalProject/build/ROS_SplinePathMotionProfiling/cmake_install.cmake")
 
 endif()
 

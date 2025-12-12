@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::ROS_SplinePathMotionProfiling::GetNavSimTest > {
   static const char* value()
   {
-    return "af597e7527248169acdbd0f263c0d5da";
+    return "649d06840e1e033bccdf27c729e6914b";
   }
 
   static const char* value(const ::ROS_SplinePathMotionProfiling::GetNavSimTest&) { return value(); }
