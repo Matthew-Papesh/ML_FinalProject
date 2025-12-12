@@ -143,14 +143,17 @@ import struct
 
 
 class GetNavSimTestResponse(genpy.Message):
-  _md5sum = "aff0bad24a3a18f4048667c38924dc82"
+  _md5sum = "bd4ea63b8d9bf4e4666dc2cd5d3af27d"
   _type = "ROS_SplinePathMotionProfiling/GetNavSimTestResponse"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """float64 position_error
-float64 heading_error
+  _full_text = """float64[] x_errors
+float64[] y_errors
+float64[] heading_errors
+float64[] lin_speed_adjs 
+float64[] ang_speed_adjs
 """
-  __slots__ = ['position_error','heading_error']
-  _slot_types = ['float64','float64']
+  __slots__ = ['x_errors','y_errors','heading_errors','lin_speed_adjs','ang_speed_adjs']
+  _slot_types = ['float64[]','float64[]','float64[]','float64[]','float64[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -160,7 +163,7 @@ float64 heading_error
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       position_error,heading_error
+       x_errors,y_errors,heading_errors,lin_speed_adjs,ang_speed_adjs
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -169,13 +172,22 @@ float64 heading_error
     if args or kwds:
       super(GetNavSimTestResponse, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
-      if self.position_error is None:
-        self.position_error = 0.
-      if self.heading_error is None:
-        self.heading_error = 0.
+      if self.x_errors is None:
+        self.x_errors = []
+      if self.y_errors is None:
+        self.y_errors = []
+      if self.heading_errors is None:
+        self.heading_errors = []
+      if self.lin_speed_adjs is None:
+        self.lin_speed_adjs = []
+      if self.ang_speed_adjs is None:
+        self.ang_speed_adjs = []
     else:
-      self.position_error = 0.
-      self.heading_error = 0.
+      self.x_errors = []
+      self.y_errors = []
+      self.heading_errors = []
+      self.lin_speed_adjs = []
+      self.ang_speed_adjs = []
 
   def _get_types(self):
     """
@@ -189,8 +201,26 @@ float64 heading_error
     :param buff: buffer, ``StringIO``
     """
     try:
-      _x = self
-      buff.write(_get_struct_2d().pack(_x.position_error, _x.heading_error))
+      length = len(self.x_errors)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.x_errors))
+      length = len(self.y_errors)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.y_errors))
+      length = len(self.heading_errors)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.heading_errors))
+      length = len(self.lin_speed_adjs)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.lin_speed_adjs))
+      length = len(self.ang_speed_adjs)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(struct.Struct(pattern).pack(*self.ang_speed_adjs))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -203,10 +233,46 @@ float64 heading_error
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
-      _x = self
       start = end
-      end += 16
-      (_x.position_error, _x.heading_error,) = _get_struct_2d().unpack(str[start:end])
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.x_errors = s.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.y_errors = s.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.heading_errors = s.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.lin_speed_adjs = s.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.ang_speed_adjs = s.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -219,8 +285,26 @@ float64 heading_error
     :param numpy: numpy python module
     """
     try:
-      _x = self
-      buff.write(_get_struct_2d().pack(_x.position_error, _x.heading_error))
+      length = len(self.x_errors)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.x_errors.tostring())
+      length = len(self.y_errors)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.y_errors.tostring())
+      length = len(self.heading_errors)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.heading_errors.tostring())
+      length = len(self.lin_speed_adjs)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.lin_speed_adjs.tostring())
+      length = len(self.ang_speed_adjs)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sd'%length
+      buff.write(self.ang_speed_adjs.tostring())
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -234,10 +318,46 @@ float64 heading_error
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
-      _x = self
       start = end
-      end += 16
-      (_x.position_error, _x.heading_error,) = _get_struct_2d().unpack(str[start:end])
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.x_errors = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.y_errors = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.heading_errors = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.lin_speed_adjs = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sd'%length
+      start = end
+      s = struct.Struct(pattern)
+      end += s.size
+      self.ang_speed_adjs = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -246,14 +366,8 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2d = None
-def _get_struct_2d():
-    global _struct_2d
-    if _struct_2d is None:
-        _struct_2d = struct.Struct("<2d")
-    return _struct_2d
 class GetNavSimTest(object):
   _type          = 'ROS_SplinePathMotionProfiling/GetNavSimTest'
-  _md5sum = '5f1ff2380d967c102097eb58066e53b1'
+  _md5sum = 'af597e7527248169acdbd0f263c0d5da'
   _request_class  = GetNavSimTestRequest
   _response_class = GetNavSimTestResponse

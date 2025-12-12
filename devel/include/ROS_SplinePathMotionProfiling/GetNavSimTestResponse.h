@@ -24,22 +24,37 @@ struct GetNavSimTestResponse_
   typedef GetNavSimTestResponse_<ContainerAllocator> Type;
 
   GetNavSimTestResponse_()
-    : position_error(0.0)
-    , heading_error(0.0)  {
+    : x_errors()
+    , y_errors()
+    , heading_errors()
+    , lin_speed_adjs()
+    , ang_speed_adjs()  {
     }
   GetNavSimTestResponse_(const ContainerAllocator& _alloc)
-    : position_error(0.0)
-    , heading_error(0.0)  {
+    : x_errors(_alloc)
+    , y_errors(_alloc)
+    , heading_errors(_alloc)
+    , lin_speed_adjs(_alloc)
+    , ang_speed_adjs(_alloc)  {
   (void)_alloc;
     }
 
 
 
-   typedef double _position_error_type;
-  _position_error_type position_error;
+   typedef std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> _x_errors_type;
+  _x_errors_type x_errors;
 
-   typedef double _heading_error_type;
-  _heading_error_type heading_error;
+   typedef std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> _y_errors_type;
+  _y_errors_type y_errors;
+
+   typedef std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> _heading_errors_type;
+  _heading_errors_type heading_errors;
+
+   typedef std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> _lin_speed_adjs_type;
+  _lin_speed_adjs_type lin_speed_adjs;
+
+   typedef std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> _ang_speed_adjs_type;
+  _ang_speed_adjs_type ang_speed_adjs;
 
 
 
@@ -70,8 +85,11 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<ContainerAllocator1> & lhs, const ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<ContainerAllocator2> & rhs)
 {
-  return lhs.position_error == rhs.position_error &&
-    lhs.heading_error == rhs.heading_error;
+  return lhs.x_errors == rhs.x_errors &&
+    lhs.y_errors == rhs.y_errors &&
+    lhs.heading_errors == rhs.heading_errors &&
+    lhs.lin_speed_adjs == rhs.lin_speed_adjs &&
+    lhs.ang_speed_adjs == rhs.ang_speed_adjs;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -104,12 +122,12 @@ struct IsMessage< ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<Contai
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -128,12 +146,12 @@ struct MD5Sum< ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<Container
 {
   static const char* value()
   {
-    return "aff0bad24a3a18f4048667c38924dc82";
+    return "bd4ea63b8d9bf4e4666dc2cd5d3af27d";
   }
 
   static const char* value(const ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xaff0bad24a3a18f4ULL;
-  static const uint64_t static_value2 = 0x048667c38924dc82ULL;
+  static const uint64_t static_value1 = 0xbd4ea63b8d9bf4e4ULL;
+  static const uint64_t static_value2 = 0x666dc2cd5d3af27dULL;
 };
 
 template<class ContainerAllocator>
@@ -152,8 +170,11 @@ struct Definition< ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<Conta
 {
   static const char* value()
   {
-    return "float64 position_error\n"
-"float64 heading_error\n"
+    return "float64[] x_errors\n"
+"float64[] y_errors\n"
+"float64[] heading_errors\n"
+"float64[] lin_speed_adjs \n"
+"float64[] ang_speed_adjs\n"
 ;
   }
 
@@ -172,8 +193,11 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.position_error);
-      stream.next(m.heading_error);
+      stream.next(m.x_errors);
+      stream.next(m.y_errors);
+      stream.next(m.heading_errors);
+      stream.next(m.lin_speed_adjs);
+      stream.next(m.ang_speed_adjs);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -194,12 +218,79 @@ struct Printer< ::ROS_SplinePathMotionProfiling::GetNavSimTestResponse_<Containe
   {
     if (false || !indent.empty())
       s << std::endl;
-    s << indent << "position_error: ";
-    Printer<double>::stream(s, indent + "  ", v.position_error);
+    s << indent << "x_errors: ";
+    if (v.x_errors.empty() || true)
+      s << "[";
+    for (size_t i = 0; i < v.x_errors.size(); ++i)
+    {
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<double>::stream(s, true ? std::string() : indent + "    ", v.x_errors[i]);
+    }
+    if (v.x_errors.empty() || true)
+      s << "]";
     if (true || !indent.empty())
       s << std::endl;
-    s << indent << "heading_error: ";
-    Printer<double>::stream(s, indent + "  ", v.heading_error);
+    s << indent << "y_errors: ";
+    if (v.y_errors.empty() || true)
+      s << "[";
+    for (size_t i = 0; i < v.y_errors.size(); ++i)
+    {
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<double>::stream(s, true ? std::string() : indent + "    ", v.y_errors[i]);
+    }
+    if (v.y_errors.empty() || true)
+      s << "]";
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "heading_errors: ";
+    if (v.heading_errors.empty() || true)
+      s << "[";
+    for (size_t i = 0; i < v.heading_errors.size(); ++i)
+    {
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<double>::stream(s, true ? std::string() : indent + "    ", v.heading_errors[i]);
+    }
+    if (v.heading_errors.empty() || true)
+      s << "]";
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "lin_speed_adjs: ";
+    if (v.lin_speed_adjs.empty() || true)
+      s << "[";
+    for (size_t i = 0; i < v.lin_speed_adjs.size(); ++i)
+    {
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<double>::stream(s, true ? std::string() : indent + "    ", v.lin_speed_adjs[i]);
+    }
+    if (v.lin_speed_adjs.empty() || true)
+      s << "]";
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "ang_speed_adjs: ";
+    if (v.ang_speed_adjs.empty() || true)
+      s << "[";
+    for (size_t i = 0; i < v.ang_speed_adjs.size(); ++i)
+    {
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<double>::stream(s, true ? std::string() : indent + "    ", v.ang_speed_adjs[i]);
+    }
+    if (v.ang_speed_adjs.empty() || true)
+      s << "]";
   }
 };
 

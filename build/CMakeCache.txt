@@ -368,10 +368,10 @@ Project_BINARY_DIR:STATIC=/home/matthew/Documents/GitHub/ML_FinalProject/build
 Project_SOURCE_DIR:STATIC=/home/matthew/Documents/GitHub/ML_FinalProject/src
 
 //Value Computed by CMake
-ROS_SplinePathMotionProfiling_BINARY_DIR:STATIC=/home/matthew/Documents/GitHub/ML_FinalProject/build/spline_drive
+ROS_SplinePathMotionProfiling_BINARY_DIR:STATIC=/home/matthew/Documents/GitHub/ML_FinalProject/build/ROS_SplinePathMotionProfiling
 
 //Value Computed by CMake
-ROS_SplinePathMotionProfiling_SOURCE_DIR:STATIC=/home/matthew/Documents/GitHub/ML_FinalProject/src/spline_drive
+ROS_SplinePathMotionProfiling_SOURCE_DIR:STATIC=/home/matthew/Documents/GitHub/ML_FinalProject/src/ROS_SplinePathMotionProfiling
 
 //Path to a library.
 RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
