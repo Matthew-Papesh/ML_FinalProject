@@ -20,13 +20,13 @@ class NavAnalyzer:
         scaler = 0.8
         
         # other motion profiling constraints: SLOW PARAMS
-        #self.ACCELERATION = 0.1 # [m/sec^2]
-        #self.MAX_ANGULAR_SPEED = 0.4 # [radians/sec]
-        #self.MAX_LINEAR_SPEED = 0.5 # [m/sec]
-         # other motion profiling constraints: FAST PARAMS
-        self.ACCELERATION = 0.4 # [m/sec^2]
+        self.ACCELERATION = 0.1 # [m/sec^2]
         self.MAX_ANGULAR_SPEED = 0.4 # [radians/sec]
-        self.MAX_LINEAR_SPEED = 0.8 # [m/sec]
+        self.MAX_LINEAR_SPEED = 0.5 # [m/sec]
+        # other motion profiling constraints: FAST PARAMS
+        #self.ACCELERATION = 0.4 # [m/sec^2]
+        #self.MAX_ANGULAR_SPEED = 0.4 # [radians/sec]
+        #self.MAX_LINEAR_SPEED = 0.8 # [m/sec]
         self.MAX_CENTRIPETAL_ACCELERATION = centripetal_acceleration * scaler # [m/sec^2]
         # initializer flags for auto-tuning pid tests; used upon initializing by evaluating PID coefficients in PIDTuner the first time by a callable error supplier on performance error
         self.init_pid_tuning = True

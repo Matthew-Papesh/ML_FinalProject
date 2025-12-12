@@ -497,7 +497,10 @@ class Navigation:
         :returns a tuple of percent error for position and heading along with speed adjustments.  
         """
         # waypoints to travel through along spline path: (waypoint = (x, y, radians))
+        # CLOSED LOOP WAYPOINTS HERE: 
         waypoints = [(4,2,-math.pi/4.0), (5,1,-math.pi/2.0), (4, 0, -math.pi*3.0/4.0), (0, 0, math.pi)]
+        # OPEN LOOPS WAYPOINTS HERE:
+        #waypoints = [(2,1,0), (3,1.5,math.pi/4),(3.5,3.5,math.pi/2),(2.5,4.5,math.pi*3.0/4.0),(1,5,math.pi)]
         recorded_path, recorded_speeds, ideal_speeds, x_errors, y_errors, heading_errors, lin_speeds, ang_speeds, lin_adjs, ang_adjs = self.driveSplinePath(waypoints, self.ACCELERATION, self.MAX_ANGULAR_SPEED, self.MAX_LINEAR_SPEED, self.MAX_CENTRIPETAL_ACCELERATION)
         try:
             self.node_rate.sleep()
