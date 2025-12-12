@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.optim as optim
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 from torch.utils.data import DataLoader, TensorDataset, Dataset, random_split
 
 #define simple MLP to learn SPEED = f(error) for PID robot
@@ -75,6 +77,9 @@ def train_model(model, train_loader, num_epochs=50, lr=0.001):
 	#loss = MSE
 	criterion = nn.MSELoss()
 	optimizer = optim.Adam(model.parameters(), lr=lr)
+ 
+	#record losses for plot
+	loss_history = []
   
 	#training loop
 	for epoch in range(num_epochs):
@@ -91,13 +96,65 @@ def train_model(model, train_loader, num_epochs=50, lr=0.001):
 
 		#average loss for the epoch
 		avg_loss = running_loss / len(train_loader)
+		loss_history.append(avg_loss)
 		print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {avg_loss:.6f}')
   
 	print('Training complete')
 	torch.save(model.state_dict(), 'pid_model.pth')
 	print('Model saved as pid_model.pth')
  
+	#plot loss history
+	plt.figure(figsize=(8,5))
+	plt.plot(loss_history)
+	plt.xlabel('Epoch')
+	plt.ylabel('MSE Loss')
+	plt.title('Training Loss Curve')
+	plt.grid(True)
+	plt.show()
  
+	return loss_history
+
 #initialize and train model
 model = PIDNet(input_size=5, hidden_size=64, output_size=2)
 train_model(model, train_loader, num_epochs=50, lr=0.001)
+ 
+#3d plot
+model.eval()
+
+lin_vals = np.linspace(-1.5, 1.5, 50)
+ang_vals = np.linspace(-1.5, 1.5, 50)
+
+LIN, ANG = np.meshgrid(lin_vals, ang_vals)
+
+#build grid with 3 errs 
+grid_points = np.stack([
+	np.zeros_like(LIN),
+	np.zeros_like(LIN),
+	np.zeros_like(LIN),
+	LIN,
+	ANG
+], axis=-1).reshape(-1, 5)	
+
+#normalize
+grid_norm = (grid_points - X_mean) / X_std
+
+grid_tensor = torch.tensor(grid_norm, dtype=torch.float32)
+
+with torch.no_grad():
+	preds = model(grid_tensor).numpy()
+ 
+Z = preds[:, 0].reshape(LIN.shape)
+
+fig = plt.figure(figsize=(10, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(LIN, ANG, Z, linewidth=0, antialiased=True, alpha=0.85)
+
+ax.set_title('Model Prediction Surface g(x)\n(Varying Linear & Angular Speed)')
+
+ax.set_xlabel('Linear Speed Error')
+ax.set_ylabel('Angular Speed Error')
+ax.set_zlabel('Predicted Linear Speed Adjustment')
+
+plt.tight_layout()
+plt.show()
+
