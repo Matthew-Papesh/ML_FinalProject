@@ -8,11 +8,15 @@ class PIDNet(nn.Module):
 	def __init__(self):
 		super(PIDNet, self).__init__()
 		#input layer to hidden layer 1
-		self.fc1 = nn.Linear(in_features=3, out_features=64)
+		# (x_error, y_error, heading_error, linear_speed, angular_speed)
+		self.fc1 = nn.Linear(in_features=5, out_features=64)
+  
 		#Hidden layer 1 to hidden layer 2
 		self.fc2 = nn.Linear(in_features=64, out_features=64)
+  
 		#hidden layer 2 to output layer 
 		self.out = nn.Linear(in_features=64, out_features=2)
+  
 		#Activation for hidden layers
 		self.relu = nn.ReLU()
   
