@@ -1,7 +1,7 @@
 #!/usr/bin/env python3 
 import rospy
 from std_srvs.srv import Empty
-from src.srv import GetNavCriteriaPlan, GetNavSimTest
+from ROS_SplinePathMotionProfiling.srv import GetNavCriteriaPlan, GetNavSimTest
 from gazebo_msgs.srv import SetModelState
 from gazebo_msgs.msg import ModelState
 import handler
@@ -72,7 +72,7 @@ class NavAnalyzer:
                 rospy.logerr("NavAnalyzer.py: error: failed to retrieve successful test results")
                 exit()
             rospy.loginfo("NavAnalyzer.py: nav sim test service ended; returning test results")
-            return (response.x_errors, response.y_errors, response.heading_errors, response.lin_speed_adjs, response.ang_speed_adjs)
+            return (response.x_errors, response.y_errors, response.heading_errors, response.lin_speeds, response.ang_speeds, response.lin_speed_adjs, response.ang_speed_adjs)
         except rospy.ServiceException as e: 
             rospy.logerr("NavAnalyzer.py: exception thrown: service call failed => exception: " + e.__str__())
         return None
