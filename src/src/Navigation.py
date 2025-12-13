@@ -10,13 +10,14 @@ from geometry_msgs.msg import PoseStamped, Twist
 from nav_msgs.msg import Odometry, Path, GridCells
 from std_srvs.srv import Empty
 from PID import PID
+from MLPID import MLPID
 import rospy
 import handler
 import math
-import heapq
 
 # testing flags:
 INTERNAL_TESTING = False
+USE_MLPID = True
 
 class Navigation: 
 
@@ -361,6 +362,8 @@ class Navigation:
         # pid angular speed feedback controller 
         angular_speed_feedback = PID(kp=self.ANG_KP, ki=self.ANG_KI, kd=self.ANG_KD, process_variable=feedback_process_variable, set_point=lambda: 0.0, clegg_integration=True)
         linear_speed_feedback = PID(kp=self.LIN_KP, ki=self.LIN_KI, kd=self.LIN_KD, process_variable=feedback_process_variable, set_point=lambda: 0.0, clegg_integration=True)
+        # mimic pid control via trained neural network
+        ML_speed_feedback = MLPID()
 
         # path of odometry poses recorded to have minimal error with respect to their corresponding spline path waypoint
         recorded_path = Path()
@@ -389,6 +392,7 @@ class Navigation:
             # current position error as a vector magnitude at any time
             raw_x_error = (self.current_pose.pose.position.x - spline_path.poses[index].pose.position.x)
             raw_y_error = (self.current_pose.pose.position.y - spline_path.poses[index].pose.position.y)
+            raw_heading = 0# abs((handler.get_heading(self.current_pose) - handler.get_heading(spline_path.poses[index])) / self.MAX_SPLINE_TURN)
             position_x_pct_error = raw_x_error / (2.0 * self.TURTLEBOT3_RADIUS)
             position_y_pct_error = raw_y_error / (2.0 * self.TURTLEBOT3_RADIUS)
             position_error = handler.euclid_distance((0,0), (position_x_pct_error, position_y_pct_error))
@@ -408,7 +412,8 @@ class Navigation:
                     ideal_speeds.append((linear_speeds[index], angular_speeds[index]))
                     # heading error associated with min error (position error) 
                     min_heading_error = abs((handler.get_heading(recorded_pose) - handler.get_heading(spline_path.poses[index])) / self.MAX_SPLINE_TURN)
-                    
+                    raw_heading = min_heading_error
+
                 prev_frontier_update_time = rospy.get_time() # stamp time of updating frontier
                 #min_position_error = position_error
                 recorded_pose = self.current_pose
@@ -438,6 +443,12 @@ class Navigation:
             # look up memoized speed calculations given position index and system feedback control
             ang_speed = angular_speeds[index] + angular_speed_feedback.output() 
             lin_speed = max(0.001, abs(linear_speeds[index]) - max(0, abs(linear_speed_feedback.output())))
+            if USE_MLPID:
+                smart_feedback = ML_speed_feedback.output(raw_x_error, raw_y_error, raw_heading, self.current_speed.linear.x, self.current_speed.angular.z)
+                #print(smart_feedback)
+                ang_speed = angular_speeds[index] + smart_feedback[1]
+                lin_speed = linear_speeds[index] #+ smart_feedback[0]
+
             self.setSpeed(lin_speed, ang_speed) # SETTING ADJUSTED SPEEDS
 
         # come to a stop and return data
@@ -498,9 +509,9 @@ class Navigation:
         """
         # waypoints to travel through along spline path: (waypoint = (x, y, radians))
         # CLOSED LOOP WAYPOINTS HERE: 
-        waypoints = [(4,2,-math.pi/4.0), (5,1,-math.pi/2.0), (4, 0, -math.pi*3.0/4.0), (0, 0, math.pi)]
+        #waypoints = [(4,2,-math.pi/4.0), (5,1,-math.pi/2.0), (4, 0, -math.pi*3.0/4.0), (0, 0, math.pi)]
         # OPEN LOOPS WAYPOINTS HERE:
-        #waypoints = [(2,1,0), (3,1.5,math.pi/4),(3.5,3.5,math.pi/2),(2.5,4.5,math.pi*3.0/4.0),(1,5,math.pi)]
+        waypoints = [(2,1,0), (3,1.5,math.pi/4),(3.5,3.5,math.pi/2),(2.5,4.5,math.pi*3.0/4.0),(1,5,math.pi)]
         recorded_path, recorded_speeds, ideal_speeds, x_errors, y_errors, heading_errors, lin_speeds, ang_speeds, lin_adjs, ang_adjs = self.driveSplinePath(waypoints, self.ACCELERATION, self.MAX_ANGULAR_SPEED, self.MAX_LINEAR_SPEED, self.MAX_CENTRIPETAL_ACCELERATION)
         try:
             self.node_rate.sleep()
